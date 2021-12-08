@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Assignment</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+    <style>
+        .navbar {
+            border-radius: 0px;
+        }
+        .form-control {
+            max-width: 500px;
+            width: 90%;
+        }
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #solution {
+            color: green;
+            font-size: large;
+            font-weight: bold;
+        }
+    </style>
+    <body>
+
+        <nav class="navbar navbar-inverse">
+          
+            <div class="container-fluid">
+
+                {% if user.is_authenticated %}
+
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="{% url 'logout' %}"> Log Out</a>
+                    </li>
+                </ul>
+ 
+                {% else %}
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="{% url 'register' %}">Register</a>
+                    </li>
+                </ul>
+        
+                {% endif %}
+        
+            </div>
+          </nav>
+        
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
